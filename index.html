@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Bruno Michel Pera | Portfólio</title>
+  <meta name="description" content="Portfólio profissional de Bruno Michel Pera com repositórios públicos do GitHub, WhatsApp e Currículo Lattes." />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <header class="navbar reveal">
+    <a class="brand" href="#inicio">
+      <span class="brand-mark">BP</span>
+      <span>
+        <strong>Bruno Michel Pera</strong>
+        <small>Professor • Desenvolvedor • Robótica</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+
+    <nav class="nav" id="nav">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content reveal">
+        <span class="kicker">Portfólio técnico</span>
+        <h1>Projetos reais em software, robótica, Android, web e educação tecnológica.</h1>
+        <p>
+          Professor e desenvolvedor com foco em soluções práticas para ensino, prototipação,
+          sistemas embarcados, aplicações Android, Firebase, Arduino, IoT e ferramentas web.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/5512981418071" target="_blank" rel="noopener">
+            Chamar no WhatsApp
+          </a>
+          <a class="btn btn-secondary" href="http://lattes.cnpq.br/4209017189513990" target="_blank" rel="noopener">
+            Currículo Lattes
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/perabru" target="_blank" rel="noopener">
+            GitHub
+          </a>
+        </div>
+
+        <div class="stack-line">
+          <span>Arduino</span>
+          <span>Kotlin</span>
+          <span>Firebase</span>
+          <span>JavaScript</span>
+          <span>IoT</span>
+          <span>Educação</span>
+        </div>
+      </div>
+
+      <aside class="profile-card reveal delay-1">
+        <div class="profile-head">
+          <img id="avatar" alt="Avatar de Bruno Michel Pera no GitHub" />
+          <div>
+            <h2 id="profileName">Bruno Michel Pera</h2>
+            <p id="profileBio">Professor, engenheiro de computação e desenvolvedor.</p>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div>
+            <strong id="repoCount">--</strong>
+            <span>Repositórios</span>
+          </div>
+          <div>
+            <strong id="followersCount">--</strong>
+            <span>Seguidores</span>
+          </div>
+          <div>
+            <strong id="followingCount">--</strong>
+            <span>Seguindo</span>
+          </div>
+        </div>
+
+        <div class="status">
+          <span></span>
+          Dados públicos carregados pelo GitHub
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="section-title reveal">
+        <span class="kicker">Sobre</span>
+        <h2>Desenvolvimento com aplicação prática em sala de aula, pesquisa e protótipos.</h2>
+        <p>
+          O portfólio foi organizado para mostrar projetos por área, permitindo abrir e fechar
+          grupos de repositórios sem poluir a interface.
+        </p>
+      </div>
+
+      <div class="cards-3">
+        <article class="info-card reveal">
+          <span class="number">01</span>
+          <h3>Robótica e Embarcados</h3>
+          <p>Arduino, motores, sensores, ponte H, robôs sumô, ESP32, MQTT e automação.</p>
+        </article>
+
+        <article class="info-card reveal delay-1">
+          <span class="number">02</span>
+          <h3>Android e Firebase</h3>
+          <p>Aplicativos em Kotlin com autenticação, banco de dados, histórico e interfaces mobile.</p>
+        </article>
+
+        <article class="info-card reveal delay-2">
+          <span class="number">03</span>
+          <h3>Web e Educação</h3>
+          <p>Sistemas web, simuladores, dashboards, projetos escolares e ferramentas didáticas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="projetos">
+      <div class="section-title reveal">
+        <span class="kicker">Projetos</span>
+        <h2>Repositórios organizados em menu expansível.</h2>
+        <p>
+          Abra as categorias abaixo para visualizar os projetos. A lista é carregada automaticamente
+          do GitHub e organizada por tema.
+        </p>
+      </div>
+
+      <div class="project-toolbar reveal">
+        <label>
+          <span>Buscar projeto</span>
+          <input id="searchInput" type="search" placeholder="Ex.: Arduino, Firebase, Kotlin, robô..." />
+        </label>
+
+        <label>
+          <span>Ordenar</span>
+          <select id="sortFilter">
+            <option value="updated">Mais recentes</option>
+            <option value="name">Nome</option>
+            <option value="stars">Estrelas</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="metrics reveal">
+        <article>
+          <span>Total de projetos</span>
+          <strong id="totalRepos">--</strong>
+        </article>
+        <article>
+          <span>Linguagens</span>
+          <strong id="totalLanguages">--</strong>
+        </article>
+        <article>
+          <span>Atualização mais recente</span>
+          <strong id="lastUpdated">--</strong>
+        </article>
+      </div>
+
+      <div class="project-menu reveal" id="projectMenu"></div>
+
+      <div class="empty-state hidden" id="emptyState">
+        <h3>Nenhum projeto encontrado</h3>
+        <p>Tente outro termo na busca.</p>
+      </div>
+    </section>
+
+    <section class="contact-section reveal" id="contato">
+      <div>
+        <span class="kicker">Contato</span>
+        <h2>Vamos conversar sobre tecnologia, educação e projetos?</h2>
+        <p>
+          Entre em contato pelo WhatsApp, veja o Currículo Lattes ou acesse os repositórios no GitHub.
+        </p>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://wa.me/5512981418071" target="_blank" rel="noopener">
+          WhatsApp
+        </a>
+        <a class="btn btn-secondary" href="http://lattes.cnpq.br/4209017189513990" target="_blank" rel="noopener">
+          Lattes
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/perabru" target="_blank" rel="noopener">
+          GitHub
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <a class="whatsapp-float" href="https://wa.me/5512981418071" target="_blank" rel="noopener" aria-label="Chamar Bruno no WhatsApp">
+    WhatsApp
+  </a>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Bruno Michel Pera.</p>
+    <p>Portfólio em tela preta com dados públicos do GitHub.</p>
+  </footer>
+
+  <template id="repoTemplate">
+    <article class="repo-card">
+      <div class="repo-top">
+        <span class="repo-language"></span>
+        <span class="repo-stars"></span>
+      </div>
+      <h3></h3>
+      <p class="repo-description"></p>
+      <div class="repo-meta">
+        <span class="repo-date"></span>
+      </div>
+      <div class="repo-actions">
+        <a class="repo-link" target="_blank" rel="noopener">Ver código</a>
+        <a class="repo-demo hidden" target="_blank" rel="noopener">Demo</a>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
