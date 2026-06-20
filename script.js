@@ -4,45 +4,40 @@ const categoryConfig = [
   {
     id: "robotica",
     title: "Robótica, Arduino e IoT",
-    description: "Projetos com sensores, motores, ESP32, ponte H, sumô de robôs e automação.",
     keywords: ["arduino", "robo", "robô", "sumo", "sumô", "esp", "iot", "mqtt", "sensor", "ponte", "h", "motor", "wokwi", "tinkercad"]
   },
   {
     id: "android",
     title: "Android, Kotlin e Firebase",
-    description: "Aplicativos mobile, autenticação, banco de dados, telas e integrações.",
     keywords: ["android", "kotlin", "firebase", "app", "derma", "cantina", "mobile", "leaf", "fit", "ecotherms"]
   },
   {
     id: "web",
     title: "Web, Sistemas e Dashboards",
-    description: "Sites, sistemas web, simuladores, painéis, gráficos e interfaces.",
     keywords: ["site", "web", "html", "css", "javascript", "dashboard", "sistema", "simulador", "reels", "materiais", "prova"]
   },
   {
     id: "educacao",
     title: "Educação e Ferramentas Didáticas",
-    description: "Projetos para ensino, avaliações, acessibilidade, aulas e ferramentas pedagógicas.",
     keywords: ["educacao", "educação", "prova", "atividade", "aula", "ensino", "adaptacao", "adaptação", "escola"]
   },
   {
     id: "outros",
     title: "Outros Repositórios",
-    description: "Demais projetos públicos do GitHub.",
     keywords: []
   }
 ];
 
 const featuredDescriptions = {
-  "ponte-H-arduino": "Controle de motores DC com Arduino e Ponte H L298N, incluindo tabela verdade, pinagem e documentação educacional.",
-  "sumo-robos-2026": "Projeto de robô sumô com Arduino, sensores, estratégia de combate e controle de motores.",
-  "selecao-materiais": "Sistema web para seleção de materiais com interface interativa, gráficos e apoio à decisão.",
-  "gerenciador-reels": "Protótipo web para organização de publicações, conteúdos digitais e fluxo de postagem.",
-  "SumoBotStudio": "Ambiente para simulação, programação e estudo de robôs sumô em contexto educacional.",
-  "sistema-adaptacao-prova": "Sistema educacional para criação e adaptação de avaliações com acessibilidade e organização escolar.",
-  "DermaSkin2": "Aplicativo Android em Kotlin para triagem dermatológica, histórico e apoio à análise de lesões de pele.",
-  "appCantina26": "Aplicativo Android para pedidos de cantina, cadastro de usuários e fluxo de compras.",
-  "LeafHeathi": "Aplicativo Android voltado à análise de saúde de folhas e apoio a projetos de tecnologia ambiental."
+  "ponte-H-arduino": "Controle de motores DC com Arduino e Ponte H L298N.",
+  "sumo-robos-2026": "Robô sumô com Arduino, sensores e estratégia de combate.",
+  "selecao-materiais": "Sistema web para seleção de materiais.",
+  "gerenciador-reels": "Protótipo web para organização de publicações.",
+  "SumoBotStudio": "Ambiente para simulação de robôs sumô.",
+  "sistema-adaptacao-prova": "Sistema educacional para adaptação de avaliações.",
+  "DermaSkin2": "Aplicativo Android para triagem dermatológica.",
+  "appCantina26": "Aplicativo Android para pedidos de cantina.",
+  "LeafHeathi": "Aplicativo para análise de saúde de folhas."
 };
 
 let allRepos = [];
@@ -122,8 +117,7 @@ async function init() {
     console.error(error);
     el.projectMenu.innerHTML = `
       <div class="empty-state">
-        <h3>Não foi possível carregar os projetos agora.</h3>
-        <p>A API pública do GitHub pode estar temporariamente limitada. Tente novamente em alguns minutos.</p>
+        <h3>Não foi possível carregar os projetos.</h3>
       </div>
     `;
   }
@@ -229,10 +223,7 @@ function renderProjectMenu(repos) {
 
     item.innerHTML = `
       <button class="accordion-button" type="button" aria-expanded="${index === 0 ? "true" : "false"}">
-        <div>
-          <h3>${category.title}</h3>
-          <p>${category.description}</p>
-        </div>
+        <h3>${category.title}</h3>
         <span class="count">${categoryRepos.length}</span>
       </button>
       <div class="accordion-content">
@@ -300,9 +291,9 @@ function createRepoCard(repo) {
   description.textContent =
     featuredDescriptions[repo.name] ||
     repo.description ||
-    "Repositório público com código, documentação ou experimento técnico.";
+    "Repositório público no GitHub.";
 
-  date.textContent = `Atualizado em ${formatDate(repo.updated_at)}`;
+  date.textContent = formatDate(repo.updated_at);
   link.href = repo.html_url;
 
   if (repo.homepage) {
